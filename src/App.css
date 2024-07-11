@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+body {
+    background: #eae8fe;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.vending-area {
+    width: 360px;
+    height: 545px;
+    background: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.money-area {
+    width: 360px;
+    height: 50px;
+    background: #fff;
+    padding: 9px 27px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.money-box {
+    background: #eae8fe;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20.27px;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.money-box .strong {
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.get-cola-area {
+    width: 360px;
+    height: 474px;
+    background: #fff;
 }
