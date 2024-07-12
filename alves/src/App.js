@@ -97,6 +97,13 @@ function App() {
         );
     };
 
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        if (/^\d*$/.test(value)) {
+            setInputAmount(value);
+        }
+    };
+
     return (
         <div className="App">
             <div className="vending-area">
@@ -123,7 +130,7 @@ function App() {
                             className="send-input"
                             placeholder="입금액 입력"
                             value={inputAmount}
-                            onChange={(e) => setInputAmount(e.target.value)}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <button className="change-btn" onClick={handleDeposit}>입금</button>
