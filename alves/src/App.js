@@ -82,26 +82,24 @@ function App() {
     };
 
     const handleDecrement = (product) => {
-        setMiniPurchasedItems((prevItems) =>
-            prevItems
-                .map((item) =>
-                    item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
-                )
-                .filter((item) => {
-                    if (item.quantity > 0) {
-                        setBalance((prevBalance) => prevBalance + product.price);
-                        return true;
-                    }
-                    return false;
-                })
-        );
-    };
+        const updatedItems = miniPurchasedItems.map((item) =>
+            item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+        ).filter((item) => item.quantity > 0);
 
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        if (/^\d*$/.test(value)) {
-            setInputAmount(value);
+        // 총 감소한 수량 계산
+        const decreasedQuantity = miniPurchasedItems.reduce((total, item) => {
+            if (item.id === product.id) {
+                return total + 1;
+            }
+            return total;
+        }, 0);
+
+        // 총 감소한 수량만큼 잔액 추가
+        if (decreasedQuantity > 0) {
+            setBalance((prevBalance) => prevBalance + decreasedQuantity * product.price);
         }
+
+        setMiniPurchasedItems(updatedItems);
     };
 
     return (
@@ -130,7 +128,7 @@ function App() {
                             className="send-input"
                             placeholder="입금액 입력"
                             value={inputAmount}
-                            onChange={handleInputChange}
+                            onChange={(e) => setInputAmount(e.target.value)}
                         />
                     </div>
                     <button className="change-btn" onClick={handleDeposit}>입금</button>
