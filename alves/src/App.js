@@ -67,7 +67,7 @@ function App() {
 
                 <footer className="footer">
                     <div className="instagram-link">
-                        <a href="https://www.instagram.com/">Instagram</a>
+                        <a href="https://www.afreecatv.com/">SOOP</a>
                     </div>
                 </footer>
             </div>
