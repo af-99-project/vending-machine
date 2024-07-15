@@ -50,8 +50,28 @@ body {
   border: 1px solid #bdbdbd;
   border-radius: 5px;
   padding: 12px;
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 변경: 아이템이 위에서부터 시작하도록 */
 }
+
+.get-cola-box ul {
+  width: calc(100% + 20px); /* 변경: 스크롤바 공간을 더 넓게 */
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 20px; /* 변경: 오른쪽 패딩 추가 */
+}
+
+.get-cola-area-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .cont {
   width: 306px;
   height: 364px;
