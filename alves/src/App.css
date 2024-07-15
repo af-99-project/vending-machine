@@ -59,30 +59,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* 변경: 아이템이 위에서부터 시작하도록 */
+  overflow: hidden; /* 세로 스크롤을 감춤 */
 }
 
 .get-cola-box ul {
-  width: calc(100% + 20px); /* 변경: 스크롤바 공간을 더 넓게 */
+  width: calc(100% - 24px); /* 스크롤바 공간을 빼서 너비 조정 */
   height: 100%;
   overflow-y: auto;
-  padding-right: 20px; /* 변경: 오른쪽 패딩 추가 */
+  padding-right: 20px; /* 오른쪽 패딩 추가 */
+  overflow-x: hidden; /* 가로 스크롤을 숨김 */
 }
 
-.get-cola-area-mini {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.get-cola-box ul::-webkit-scrollbar {
+  width: 8px; /* 스크롤바 너비 */
 }
 
-.cont {
-  width: 306px;
-  height: 364px;
+.get-cola-box ul::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 모양 */
 }
 
-.get-cola-area .title {
+.get-cola-box .title {
   margin: 25px auto 13px;
+  font-weight: bold;
 }
 
 .cola-box {
@@ -107,9 +106,7 @@ body {
   border-radius: 5px;
   border: 1px solid #bdbdbd;
   line-height: 27px;
-  font-family: Noto Sans KR;
   font-size: 14px;
-  font-weight: 500;
   text-align: center;
 }
 
@@ -127,10 +124,8 @@ body {
 }
 
 .cola-item .title {
-  font-family: Noto Sans KR;
   font-size: 9px;
   font-weight: 500;
-  line-height: 13.03px;
   text-align: center;
 }
 
@@ -140,7 +135,6 @@ body {
   border-radius: 50px;
   background-color: #6327fe;
   color: #fff;
-  font-family: Noto Sans KR;
   font-size: 12px;
   line-height: 22px;
   font-weight: 500;
@@ -165,9 +159,9 @@ body {
   grid-template-rows: 32px 32px 106px;
   gap: 12px;
   grid-template-areas:
-      ". ."
-      ". ."
-      ". .";
+    ". ."
+    ". ."
+    ". .";
 }
 
 .change-btn {

@@ -1,7 +1,4 @@
-// machine.js
-
 import React from "react";
-import cola from "./콜라.png";
 import "./App.css";
 
 const Machine = ({
@@ -12,18 +9,9 @@ const Machine = ({
     miniPurchasedItems,
     setMiniPurchasedItems,
     mainPurchasedItems,
-    setMainPurchasedItems
+    setMainPurchasedItems,
+    products // App.js에서 전달된 products를 사용
 }) => {
-
-    const products = [
-        { id: 1, name: 'Original_Cola', price: 1000, image: cola },
-        { id: 2, name: 'Yellow_Cola', price: 1000, image: cola },
-        { id: 3, name: 'Cool_Cola', price: 1000, image: cola },
-        { id: 4, name: 'Green_Cola', price: 1000, image: cola },
-        { id: 5, name: 'Orange_Cola', price: 1000, image: cola },
-        { id: 6, name: 'Violet_Cola', price: 1000, image: cola }
-    ];
-
     const handleDeposit = () => {
         const amount = parseInt(inputAmount, 10);
         if (!isNaN(amount) && amount > 0) {
