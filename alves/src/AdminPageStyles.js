@@ -167,12 +167,12 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalImage = styled.img`
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 700px;
+    max-height: 700px;
 `;
 
 export const ImagePreview = styled.img`
-    max-width: 100px;
+    max-width: 500px;
     margin-top: 10px;
     cursor: pointer;
 

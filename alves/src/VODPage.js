@@ -23,12 +23,13 @@ const VODPage = () => {
     };
 
     const getRandomVideoUrl = () => {
-        // Example: Generating random video URLs
+       
         const videoUrls = [
             'https://www.youtube.com/watch?v=Uk8SWL1IK2Q&list=RDUk8SWL1IK2Q&start_radio=1',
             'https://www.youtube.com/watch?v=11iZcYbq_is&list=RDUk8SWL1IK2Q&index=2',
             'https://www.youtube.com/watch?v=Rj7N4ThLGQY',
-            // Add more video URLs as needed
+            'https://www.youtube.com/watch?v=UCmgGZbfjmk&list=RD211aaP1-_aw&index=2',
+            'https://www.youtube.com/watch?v=UCmgGZbfjmk&list=RD211aaP1-_aw&index=3'
         ];
         const randomIndex = Math.floor(Math.random() * videoUrls.length);
         return videoUrls[randomIndex];

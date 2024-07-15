@@ -10,7 +10,7 @@ function App() {
     const initialProducts = [
         { id: 1, name: 'Original_Cola', price: 1000, image: cola },
         { id: 2, name: 'Yellow_Cola', price: 1000, image: cola },
-        { id: 3, name: 'Cool_Cola', price: 1000, image: cola },
+        { id: 3, name: 'Cool_Cola', price: 1500, image: cola },
         { id: 4, name: 'Green_Cola', price: 1000, image: cola },
         { id: 5, name: 'Orange_Cola', price: 1000, image: cola },
         { id: 6, name: 'Violet_Cola', price: 1000, image: cola }
