@@ -41,7 +41,8 @@ function App() {
         }
     ];
 
-    const [balance, setBalance] = useState(5000);
+    const [balance, setBalance] = useState(0);
+    const [Cash, setCash] = useState(35000);
     const [inputAmount, setInputAmount] = useState('');
     const [miniPurchasedItems, setMiniPurchasedItems] = useState([]);
     const [mainPurchasedItems, setMainPurchasedItems] = useState([]);
@@ -73,6 +74,12 @@ function App() {
                     <Route
                         path="/"
                         element={<> < Machine
+                        Cash= {
+                            Cash
+                        }
+                        setCash = {
+                            setCash
+                        }
                         balance = {
                             balance
                         }
@@ -103,7 +110,7 @@ function App() {
                         />
                             <div className="money-area">
                                 <div className="money-box">
-                                    <span>소지금:</span > <span className="strong">{balance}원</span>
+                                    <span>소지금:</span > <span className="strong">{Cash}원</span>
                     </div>
                 </div>
                 <div className="get-cola-area">

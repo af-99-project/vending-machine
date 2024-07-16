@@ -3,6 +3,8 @@ import "./App.css";
 import"./reset.css";
 
 const Machine = ({
+    Cash,
+    setCash,
     balance,
     setBalance,
     inputAmount,
@@ -16,8 +18,14 @@ const Machine = ({
     const handleDeposit = () => {
         const amount = parseInt(inputAmount, 10);
         if (!isNaN(amount) && amount > 0) {
-            setBalance(balance + amount);
+            setBalance(balance + amount)
+            setCash(Cash-amount)
+            
             setInputAmount('');
+
+            console.log("amount",amount);
+            console.log("balance",balance);
+            console.log("Cash", Cash);
         } else {
             alert("입금액을 입력해주세요.");
         }
@@ -101,6 +109,7 @@ const Machine = ({
         const value = e.target.value;
         if (/^\d*$/.test(value)) {
             setInputAmount(value);
+
         }
     };
 
