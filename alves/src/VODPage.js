@@ -70,7 +70,12 @@ const VODPage = () => {
 
     return (
         <VODContainer>
-            <h2>나만의 플레이리스트</h2>
+            <TitleContainer>
+                <h2>나만의 플레이리스트</h2>
+                <RecommendButton onClick={() => window.open('https://www.youtube.com/feed/trending?bp=6gQJRkVleHBsb3Jl', '_blank')}>
+                    추천 받기
+                </RecommendButton>
+            </TitleContainer>
             <InputContainer>
                 <StyledInput
                     type="text"
@@ -115,6 +120,13 @@ const VODContainer = styled.div`
     background-color: #f0f0f0;
 `;
 
+const TitleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+`;
+
 const InputContainer = styled.div`
     display: flex;
     align-items: center;
@@ -146,6 +158,20 @@ const StyledButton = styled.button`
 
     &:hover {
         background-color: #ffc800;
+    }
+`;
+
+const RecommendButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
     }
 `;
 

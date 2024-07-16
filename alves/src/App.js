@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Machine from "./machine";
-import AdminPage from "./AdminPage"; // Admin 페이지 컴포넌트 import
-import VODPage from "./VODPage"; // VOD 페이지 컴포넌트 import
+import AdminPage from "./AdminPage";
+import VODPage from "./VODPage";
 import cola from "./콜라.png";
+import styled from "styled-components";
 
 function App() {
     const initialProducts = [
@@ -21,6 +21,11 @@ function App() {
     const [miniPurchasedItems, setMiniPurchasedItems] = useState([]);
     const [mainPurchasedItems, setMainPurchasedItems] = useState([]);
     const [products, setProducts] = useState(initialProducts);
+
+    const StyledImg = styled.img`
+        width: 36px;
+        height: 65px;
+    `;
 
     return (
         <Router>
@@ -45,7 +50,7 @@ function App() {
                                 setMiniPurchasedItems={setMiniPurchasedItems}
                                 mainPurchasedItems={mainPurchasedItems}
                                 setMainPurchasedItems={setMainPurchasedItems}
-                                products={products} // Machine 컴포넌트에 products 전달
+                                products={products}
                             />
                             <div className="money-area">
                                 <div className="money-box">
@@ -60,7 +65,7 @@ function App() {
                                         {mainPurchasedItems.map((item, index) => (
                                             <li className="cola-box" key={index}>
                                                 <em>
-                                                    <img src={item.image} alt={item.name} />
+                                                    <StyledImg src={item.image} alt={item.name} />
                                                 </em>
                                                 <span>{item.name}</span>
                                                 <strong className="count">{item.quantity}</strong>

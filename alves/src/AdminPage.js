@@ -17,6 +17,7 @@ import {
     ThunderAnimation,
     ImagePreview,
     StyledAddMoreButton,
+    ProductImage,
 } from "./AdminPageStyles";
 
 const AdminPage = ({ products, setProducts }) => {
@@ -172,7 +173,7 @@ const AdminPage = ({ products, setProducts }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="productImage">상품 이미지:</label>
+                            <label htmlFor="ProductImage">상품 이미지:</label>
                             <input
                                 type="file"
                                 id="productImage"
@@ -227,7 +228,7 @@ const AdminPage = ({ products, setProducts }) => {
                     <ProductItem key={product.id} onClick={() => handleProductClick(product)}>
                         <p>상품명: {product.name}</p>
                         <p>가격: {product.price}</p>
-                        <img src={product.image} alt={product.name} style={{ maxWidth: "100px" }} />
+                        <ProductImage src={product.image} alt={product.name} style={{ maxWidth: "100px" }} />
                     </ProductItem>
                 ))}
             </ProductListContainer>

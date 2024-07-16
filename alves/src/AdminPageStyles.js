@@ -76,8 +76,8 @@ export const PasswordInput = styled.input`
 `;
 
 export const TogglePasswordButton = styled.button`
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 15px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -92,11 +92,11 @@ export const TogglePasswordButton = styled.button`
 
 export const SubmitButton = styled.button`
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 15px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
 
@@ -131,7 +131,7 @@ export const ProductItem = styled.div`
     }
 
     img {
-        max-width: 100px;
+        max-width: 50px;
     }
 `;
 
@@ -165,12 +165,12 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalImage = styled.img`
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 700px;
+    max-height: 700px;
 `;
 
 export const ImagePreview = styled.img`
-    max-width: 500px;
+    max-width: 200px;
     margin-top: 10px;
     cursor: pointer;
 
@@ -179,6 +179,7 @@ export const ImagePreview = styled.img`
         transition: transform 0.2s ease-in-out;
     }
 `;
+
 
 export const ThunderAnimation = styled.div`
     position: fixed; /* or absolute based on your requirement */
@@ -190,6 +191,7 @@ export const ThunderAnimation = styled.div`
     background-size: cover;
     animation: ${thunderAnimation} 1.5s ease-out;
     z-index: 100;
+    opacity: 0; /* Initially hidden */
 `;
 
 export const  StyledAddMoreButton = styled.button`
@@ -205,4 +207,9 @@ export const  StyledAddMoreButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
+`;
+
+export const ProductImage = styled.img`
+    width: 36px;
+    height: 65px;
 `;

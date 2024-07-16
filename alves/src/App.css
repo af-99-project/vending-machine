@@ -36,6 +36,23 @@ body {
   flex-grow: 1;
 }
 
+@media (max-width: 768px) {
+  .money-box {
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .money-box {
+      font-size: 10px;
+      padding: 4px 6px;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}
+
+
 .strong {
   font-weight: 700;
 }
@@ -145,7 +162,13 @@ body {
 .cola-item img {
   width: 36px;
   height: 65px;
+  
 }
+.cola-image {
+  width: 36px;
+  height: 65px;
+}
+
 
 .cola-list {
   display: grid;

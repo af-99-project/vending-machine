@@ -10,13 +10,15 @@ const Machine = ({
     setMiniPurchasedItems,
     mainPurchasedItems,
     setMainPurchasedItems,
-    products // App.js에서 전달된 products를 사용
+    products
 }) => {
     const handleDeposit = () => {
         const amount = parseInt(inputAmount, 10);
         if (!isNaN(amount) && amount > 0) {
             setBalance(balance + amount);
             setInputAmount('');
+        } else {
+            alert("입금액을 입력해주세요.");
         }
     };
 
@@ -107,7 +109,7 @@ const Machine = ({
                 {products.map((product) => (
                     <li className="cola-item" key={product.id}>
                         <em>
-                            <img src={product.image} alt={product.name} />
+                            <img src={product.image} alt={product.name} className="cola-image" />
                         </em>
                         <span className="title">{product.name}</span>
                         <strong className="cost" onClick={() => handlePurchase(product)}>{product.price}원</strong>
@@ -132,11 +134,11 @@ const Machine = ({
                 <button className="change-btn" onClick={handleDeposit}>입금</button>
                 <div className="get-cola-area-mini">
                     <div className="get-cola-box">
-                        <ul>
+                        <ul className="get-cola-ui">
                             {miniPurchasedItems.map((item, index) => (
                                 <li className="cola-box" key={index}>
                                     <em>
-                                        <img src={item.image} alt={item.name} />
+                                        <img src={item.image} alt={item.name} className="cola-image" />
                                     </em>
                                     <span>{item.name}</span>
                                     <strong className="count">{item.quantity}</strong>
