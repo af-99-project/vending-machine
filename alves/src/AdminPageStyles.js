@@ -1,5 +1,3 @@
-// AdminPageStyles.js
-
 import styled, { keyframes } from "styled-components";
 
 // Define keyframes for thunder animation
@@ -29,7 +27,7 @@ export const ProductForm = styled.form`
             margin-bottom: 5px;
         }
 
-        input[type="text"], input[type="file"] {
+        input[type="text"], input[type="file"], input[type="number"] {
             padding: 8px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -167,8 +165,8 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalImage = styled.img`
-    max-width: 700px;
-    max-height: 700px;
+    max-width: 500px;
+    max-height: 500px;
 `;
 
 export const ImagePreview = styled.img`
@@ -192,4 +190,19 @@ export const ThunderAnimation = styled.div`
     background-size: cover;
     animation: ${thunderAnimation} 1.5s ease-out;
     z-index: 100;
+`;
+
+export const  StyledAddMoreButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+
+    &:hover {
+        background-color: #0056b3;
+    }
 `;

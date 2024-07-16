@@ -1,5 +1,3 @@
-// AdminPage.js
-
 import React, { useState, useEffect } from "react";
 import {
     AdminPageContainer,
@@ -16,8 +14,9 @@ import {
     Modal,
     CloseButton,
     ModalImage,
-    ThunderAnimation, // ThunderAnimation 스타일 import
-    ImagePreview, // ImagePreview 스타일 import 추가
+    ThunderAnimation,
+    ImagePreview,
+    StyledAddMoreButton,
 } from "./AdminPageStyles";
 
 const AdminPage = ({ products, setProducts }) => {
@@ -32,15 +31,16 @@ const AdminPage = ({ products, setProducts }) => {
     const [error, setError] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [imageURL, setImageURL] = useState(null);
-    const [modalImage, setModalImage] = useState(null); // 모달 이미지 상태 추가
-    const [showThunder, setShowThunder] = useState(false); // 천둥번개 애니메이션 상태 추가
+    const [modalImage, setModalImage] = useState(null);
+    const [showThunder, setShowThunder] = useState(false);
+    const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [isProductAdded, setIsProductAdded] = useState(false);
 
     useEffect(() => {
-        // 비밀번호를 묻는 페이지를 처음 렌더링 시에만 보여주도록 설정
-        if (!showAdminPage) {
+        if (isFirstVisit) {
             setShowAdminPage(false);
         }
-    }, []);
+    }, [isFirstVisit]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -63,23 +63,21 @@ const AdminPage = ({ products, setProducts }) => {
                 image: imageURL,
             };
 
-            // 기존 상품 목록에 새로운 상품 추가
             const updatedProducts = [...products, product];
             setProducts(updatedProducts);
 
-            // 입력 필드 초기화
             setNewProduct({
                 name: "",
                 price: "",
                 image: null,
             });
-            // 이미지 URL 초기화
             setImageURL(null);
 
-            console.log("Product added: ", product);
-            console.log("Updated products: ", updatedProducts);
+            setIsProductAdded(true);
+            setTimeout(() => {
+                setIsProductAdded(false);
+            }, 5000); // 3초 후에 상품 추가 완료 메시지를 숨김
 
-            // 비밀번호 입력 페이지로 돌아가기
             setShowAdminPage(false);
         } else {
             alert("Please fill out all fields.");
@@ -91,7 +89,6 @@ const AdminPage = ({ products, setProducts }) => {
     };
 
     const handleEnterKeyPress = (e) => {
-        // 엔터키를 눌렀을 때도 확인되도록 처리
         if (e.key === "Enter") {
             validatePassword();
         }
@@ -105,35 +102,45 @@ const AdminPage = ({ products, setProducts }) => {
         if (password === 'alves' || password === '알베스') {
             setShowAdminPage(true);
             setError(false);
+            setIsFirstVisit(false);
         } else if (password === 'nobel' || password === '노벨') {
             setError(false);
-            setShowThunder(true); // 천둥번개 애니메이션 활성화
+            setShowThunder(true);
             setTimeout(() => {
                 alert("노벨이라고 말한 당신, 미쳤습니까?");
-                setShowThunder(false); // 천둥번개 애니메이션 비활성화
-            }, 1500); // 애니메이션 지속 시간
+                setShowThunder(false);
+            }, 1500);
         } else {
             setError(true);
         }
     };
 
     const handlePreviewImageClick = () => {
-        // 미리보기 이미지 클릭 시 모달에 이미지 표시
         setModalImage(imageURL);
     };
 
     const closeModal = () => {
-        // 모달 닫기
         setModalImage(null);
     };
 
     const handleProductClick = (product) => {
-        // 클릭한 상품을 크게 확대해서 보여주는 기능
         setModalImage(product.image);
+    };
+
+    const handleReturnToAdminPage = () => {
+        setIsProductAdded(false);
+        setShowAdminPage(true);
     };
 
     return (
         <>
+            {isProductAdded && (
+                <div style={{ textAlign: "center", padding: "20px", backgroundColor: "#f0f0f0" }}>
+                    <p>상품 추가가 완료되었습니다.</p>
+                    <StyledAddMoreButton onClick={handleReturnToAdminPage}>상품 더 추가하기</StyledAddMoreButton>
+                </div>
+            )}
+
             {showAdminPage ? (
                 <AdminPageContainer>
                     <h2>자판기 상품 추가 페이지</h2>
@@ -151,11 +158,12 @@ const AdminPage = ({ products, setProducts }) => {
                         <div className="form-group">
                             <label htmlFor="productPrice">금액:</label>
                             <input
-                                type="text"
+                                type="number"
                                 id="productPrice"
                                 name="price"
                                 value={newProduct.price}
                                 onChange={handleInputChange}
+                                min="0"
                             />
                         </div>
                         <div className="form-group">
@@ -171,7 +179,7 @@ const AdminPage = ({ products, setProducts }) => {
                                 <ImagePreview
                                     src={imageURL}
                                     alt="Product Preview"
-                                    onClick={handlePreviewImageClick} // 미리보기 이미지 클릭 이벤트 추가
+                                    onClick={handlePreviewImageClick}
                                 />
                             )}
                         </div>
@@ -197,10 +205,8 @@ const AdminPage = ({ products, setProducts }) => {
                 </PasswordPageContainer>
             )}
 
-            {/* 천둥번개 애니메이션 */}
             {showThunder && <ThunderAnimation />}
 
-            {/* 확대된 이미지 모달 */}
             {modalImage && (
                 <ModalOverlay onClick={closeModal}>
                     <Modal>
@@ -210,7 +216,6 @@ const AdminPage = ({ products, setProducts }) => {
                 </ModalOverlay>
             )}
 
-            {/* 상품 목록 확인용 */}
             <ProductListContainer>
                 <h2>상품 목록</h2>
                 {products.map((product) => (
