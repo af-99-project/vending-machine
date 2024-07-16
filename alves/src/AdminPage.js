@@ -80,7 +80,7 @@ const AdminPage = ({ products, setProducts }) => {
 
             setShowAdminPage(false);
         } else {
-            alert("Please fill out all fields.");
+            alert("상품명,금액,이미지를 넣어주세요.");
         }
     };
 
@@ -103,6 +103,11 @@ const AdminPage = ({ products, setProducts }) => {
             setShowAdminPage(true);
             setError(false);
             setIsFirstVisit(false);
+            setShowThunder(true); // 
+            setTimeout(() => {
+                setShowThunder(false); 
+                alert("역시 뭘 아는구만"); 
+            }, 1500);
         } else if (password === 'nobel' || password === '노벨') {
             setError(false);
             setShowThunder(true);
