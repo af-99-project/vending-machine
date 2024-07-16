@@ -8,7 +8,6 @@ body {
 
 .vending-area {
   width: 360px;
-  height: 545px;
   background: #fff;
   padding: 31px 27px 20px;
 }
@@ -47,7 +46,6 @@ body {
   .money-box {
       font-size: 10px;
       padding: 4px 6px;
-      flex-direction: column;
       align-items: flex-start;
   }
 }
@@ -57,11 +55,12 @@ body {
   font-weight: 700;
 }
 
+.title {margin-bottom:20px;}
+
 .get-cola-area {
-  display: flex;
-  flex-direction: column;
-  width:414px;
-  height: 474px;
+  text-align:center;
+  padding:30px 20px;
+  width:360px;
   align-items: center;
   background: #fff;
 }
@@ -70,7 +69,7 @@ body {
   background-color: #eae8fe;
   border: 1px solid #bdbdbd;
   border-radius: 15px;
-  padding: 2px;
+  padding: 10px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -79,14 +78,19 @@ body {
   overflow: hidden; /* 세로 스크롤을 감춤 */
 }
 
+.get-cola-area .get-cola-box {min-height:474px;}
+
 .get-cola-box ul {
-  width: calc(100% - 30px); /* 스크롤바 공간을 빼서 너비 조정 */
+  width:100%;
   height: 100%;
   overflow-y: auto;
-  padding-right: 80px; /* 오른쪽 패딩 추가 */
   overflow-x: hidden; /* 가로 스크롤을 숨김 */
-  
 }
+
+.get-cola-box ul li {
+  margin-top:8px;
+}
+.get-cola-box ul li:first-of-type {margin-top:0;}
 
 .get-cola-box ul::-webkit-scrollbar {
   width: 8px; /* 스크롤바 너비 */
@@ -160,13 +164,13 @@ body {
 }
 
 .cola-item img {
-  width: 36px;
-  height: 65px;
+  width: 26px;
+  height: 35px;
   
 }
 .cola-image {
-  width: 36px;
-  height: 65px;
+  width: 26px;
+  height: 35px;
 }
 
 

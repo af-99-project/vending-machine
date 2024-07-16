@@ -77,7 +77,7 @@ const AdminPage = ({ products, setProducts }) => {
             setIsProductAdded(true);
             setTimeout(() => {
                 setIsProductAdded(false);
-            }, 5000); // 3초 후에 상품 추가 완료 메시지를 숨김
+            }, 5000); 
 
             setShowAdminPage(false);
         } else {
@@ -108,14 +108,14 @@ const AdminPage = ({ products, setProducts }) => {
             setTimeout(() => {
                 setShowThunder(false); 
                 alert("역시 뭘 아는구만"); 
-            }, 1500);
+            }, );
         } else if (password === 'nobel' || password === '노벨') {
             setError(false);
             setShowThunder(true);
             setTimeout(() => {
                 alert("노벨이라고 말한 당신, 미쳤습니까?");
                 setShowThunder(false);
-            }, 1500);
+            }, );
         } else {
             setError(true);
         }

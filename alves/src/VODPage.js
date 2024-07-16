@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { animateScroll as scroll } from 'react-scroll';
+import {animateScroll as scroll} from 'react-scroll';
 
 const VODPage = () => {
     const [videos, setVideos] = useState([
-        { id: 1, url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', playing: false },
-        { id: 2, url: 'https://www.youtube.com/watch?v=Uk8SWL1IK2Q&list=RDUk8SWL1IK2Q&start_radio=1', playing: false },
-        { id: 3, url: 'https://www.youtube.com/watch?v=aip80BfeuDg', playing: false },
+        {
+            id: 1,
+            url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            playing: false
+        }, {
+            id: 2,
+            url: 'https://www.youtube.com/watch?v=Uk8SWL1IK2Q&list=RDUk8SWL1IK2Q&start_radio=1',
+            playing: false
+        }, {
+            id: 3,
+            url: 'https://www.youtube.com/watch?v=aip80BfeuDg',
+            playing: false
+        },
         // Add more videos as needed
     ]);
     const [newVideoUrl, setNewVideoUrl] = useState('');
@@ -17,9 +27,15 @@ const VODPage = () => {
     const fetchMoreVideos = () => {
         // Example: Fetch more videos from an API or generate new random URLs
         const newVideos = [
-            ...videos,
-            { id: videos.length + 1, url: getRandomVideoUrl(), playing: false },
-            { id: videos.length + 2, url: getRandomVideoUrl(), playing: false },
+            ...videos, {
+                id: videos.length + 1,
+                url: getRandomVideoUrl(),
+                playing: false
+            }, {
+                id: videos.length + 2,
+                url: getRandomVideoUrl(),
+                playing: false
+            }
         ];
         setVideos(newVideos);
     };
@@ -38,8 +54,16 @@ const VODPage = () => {
     };
 
     const handleVideoClick = (videoId) => {
-        const updatedVideos = videos.map(video =>
-            video.id === videoId ? { ...video, playing: !video.playing } : { ...video, playing: false }
+        const updatedVideos = videos.map(
+            video => video.id === videoId
+                ? {
+                    ...video,
+                    playing: !video.playing
+                }
+                : {
+                    ...video,
+                    playing: false
+                }
         );
         setVideos(updatedVideos);
     };
@@ -59,9 +83,12 @@ const VODPage = () => {
             const newVideo = {
                 id: videos.length + 1,
                 url: newVideoUrl.trim(),
-                playing: false,
+                playing: false
             };
-            setVideos([...videos, newVideo]);
+            setVideos([
+                ...videos,
+                newVideo
+            ]);
             setNewVideoUrl('');
             setErrorMessage('');
             alert('영상이 추가 되었다 아래 랜덤중에 이제 하나임 ㅅㄱㅇ.');
@@ -72,7 +99,8 @@ const VODPage = () => {
         <VODContainer>
             <TitleContainer>
                 <h2>나만의 플레이리스트</h2>
-                <RecommendButton onClick={() => window.open('https://www.youtube.com/feed/trending?bp=6gQJRkVleHBsb3Jl', '_blank')}>
+                <RecommendButton
+                    onClick={() => window.open('https://www.youtube.com/feed/trending?bp=6gQJRkVleHBsb3Jl', '_blank')}>
                     추천 받기
                 </RecommendButton>
             </TitleContainer>
@@ -81,8 +109,7 @@ const VODPage = () => {
                     type="text"
                     placeholder="유튜브 URL을 입력하세요"
                     value={newVideoUrl}
-                    onChange={handleInputChange}
-                />
+                    onChange={handleInputChange}/>
                 <StyledButton onClick={addNewVideo}>영상 추가</StyledButton>
             </InputContainer>
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
@@ -91,27 +118,29 @@ const VODPage = () => {
                 dataLength={videos.length}
                 next={fetchMoreVideos}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
-                style={{ overflow: 'hidden' }}
-            >
-                {videos.map((video, index) => (
-                    <div key={video.id}>
-                        <ReactPlayer
-                            url={video.url}
-                            playing={video.playing}
-                            controls={true}
-                            width="100%"
-                            height="400px"
-                        />
-                        {index !== videos.length - 1 && <Divider />} {/* Add divider if not the last video */}
-                    </div>
-                ))}
+                loader={<h4> Loading ...</h4>}
+                style={{
+                    overflow: 'hidden'
+                }}>
+                {
+                    videos.map((video, index) => (
+                        <div key={video.id}>
+                            <ReactPlayer
+                                url={video.url}
+                                playing={video.playing}
+                                controls={true}
+                                width="100%"
+                                height="400px"/> {index !== videos.length - 1 && <Divider/>}
+                            {/* Add divider if not the last video */}
+                        </div>
+                    ))
+                }
             </InfiniteScroll>
         </VODContainer>
     );
 };
 
-const VODContainer = styled.div`
+const VODContainer = styled.div `
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -120,20 +149,20 @@ const VODContainer = styled.div`
     background-color: #f0f0f0;
 `;
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.div `
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.div `
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input `
     flex: 1;
     padding: 10px;
     font-size: 16px;
@@ -146,7 +175,7 @@ const StyledInput = styled.input`
     }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button `
     padding: 10px 20px;
     font-size: 16px;
     background-color: #ffee00;
@@ -161,7 +190,7 @@ const StyledButton = styled.button`
     }
 `;
 
-const RecommendButton = styled.button`
+const RecommendButton = styled.button `
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
@@ -175,7 +204,7 @@ const RecommendButton = styled.button`
     }
 `;
 
-const ScrollToTopButton = styled.button`
+const ScrollToTopButton = styled.button `
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -193,12 +222,12 @@ const ScrollToTopButton = styled.button`
     }
 `;
 
-const ErrorMessage = styled.div`
+const ErrorMessage = styled.div `
     color: red;
     margin-top: 5px;
 `;
 
-const Divider = styled.hr`
+const Divider = styled.hr `
     margin: 20px 0;
     border: none;
     border-top: 1px solid #ccc;
